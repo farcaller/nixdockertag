@@ -1,0 +1,26 @@
+name: update-images
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  update-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: fregante/setup-git-user@v2
+      - name: Install Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          extra_nix_config: 'experimental-features = nix-command flakes'
+          nix_path: nixpkgs=channel:nixos-unstable
+      - uses: cachix/cachix-action@v12
+        with:
+          name: nixdockertag
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Check for updates
+        run: nix run .#updater -- update-all --commit
+      - name: Push updates
+        run: git push

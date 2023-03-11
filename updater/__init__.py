@@ -2,6 +2,7 @@ import subprocess
 import json
 import hashlib
 import os
+import glob
 
 import typer
 from dxf import DXF
@@ -34,6 +35,11 @@ def update(name: str, commit: bool = typer.Option(False)):
   d = DXF(host, repo, auth)
   mf = d.get_manifest(info['followTag'])
   hash = hashlib.sha256(mf.encode('utf8')).hexdigest();
+
+  if hash == info['hash']:
+    return
+  
+  print(f'updating {name} to {hash}')
   
   image_path = os.path.join('images', f'{name}.nix')
 
@@ -46,9 +52,21 @@ def update(name: str, commit: bool = typer.Option(False)):
         follow=info['followTag'],
         hash=hash)))
   
+  subprocess.run(['git', 'add', image_path], check=True)
+  
   if commit:
-    subprocess.run(['git', 'add', image_path], check=True)
     subprocess.run(['git', 'commit', '-m', f'{info["image"]}: update to {hash}'], check=True)
+
+@app.command()
+def update_all(commit: bool = typer.Option(False)):
+  images = glob.glob('images/*.nix')
+  for name in images:
+    name = os.path.splitext(os.path.basename(name))[0]
+    print(f'checking {name}')
+    try:
+      update(name, commit)
+    except RuntimeError as e:
+      print(f'failed: {e}')
 
 if __name__ == "__main__":
   app()

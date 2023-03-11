@@ -12,7 +12,11 @@
       imageNames = builtins.attrNames (builtins.readDir ./images);
     in
     {
-      images = map (name: import ./images/${name}) imageNames;
+      images = builtins.listToAttrs (
+        map (name: {
+          name = builtins.head (builtins.split "\\." name);
+          value = import ./images/${name};
+          }) imageNames);
     } // flake-utils.lib.eachDefaultSystem (system:
       let
         inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication;

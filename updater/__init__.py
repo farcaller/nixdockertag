@@ -3,6 +3,7 @@ import json
 import hashlib
 import os
 import glob
+import urllib
 
 import typer
 from dxf import DXF
@@ -29,8 +30,7 @@ def update(name: str, commit: bool = typer.Option(False)):
   host, repo = info['image'].split('/', 1)
 
   def auth(dxf, response):
-    token = requests.get(f'https://ghcr.io/token?service=ghcr.io&scope=repository:{repo}:pull&client_id=updater').json()
-    dxf.authenticate(response=response, authorization=f'Bearer{token["token"]}')
+    dxf.authenticate(response=response)
 
   d = DXF(host, repo, auth)
   mf = d.get_manifest(info['followTag'])

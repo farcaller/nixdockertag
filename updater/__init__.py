@@ -30,7 +30,11 @@ def update(name: str, commit: bool = typer.Option(False)):
   host, repo = info['image'].split('/', 1)
 
   def auth(dxf, response):
-    dxf.authenticate(response=response)
+    authorization = None
+    if host == 'ghcr.io':
+      token = requests.get(f'https://ghcr.io/token?service=ghcr.io&scope=repository:{repo}:pull&client_id=updater').json()
+      authorization = authorization=f'Bearer {token["token"]}'
+    dxf.authenticate(response=response, authorization=authorization)
 
   d = DXF(host, repo, auth)
   mf = d.get_manifest(info['followTag'])

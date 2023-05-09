@@ -6,7 +6,7 @@ import glob
 import urllib
 
 import typer
-from dxf import DXF
+from .dxf.dxf import DXF
 import requests
 import chevron
 
@@ -29,16 +29,21 @@ def update(name: str, commit: bool = typer.Option(False)):
   info = json.loads(get_image_info(name).stdout)
   host, repo = info['image'].split('/', 1)
 
-  def auth(dxf, response):
-    authorization = None
-    if host == 'ghcr.io':
-      token = requests.get(f'https://ghcr.io/token?service=ghcr.io&scope=repository:{repo}:pull&client_id=updater').json()
-      authorization = authorization=f'Bearer {token["token"]}'
-    dxf.authenticate(response=response, authorization=authorization)
-
+  def auth(d, response):
+    d.authenticate(response=response)
   d = DXF(host, repo, auth)
-  mf = d.get_manifest(info['followTag'])
-  hash = hashlib.sha256(mf.encode('utf8')).hexdigest();
+  _, dcd = d._get_alias(
+    alias=info['followTag'],
+    manifest=None,
+    verify=True,
+    sizes=False,
+    get_digest=False,
+    get_dcd=True,
+    get_manifest=False,
+    platform=None,
+    ml=True,
+  )
+  hash = dcd.split(':')[1]
 
   if hash == info['hash']:
     return

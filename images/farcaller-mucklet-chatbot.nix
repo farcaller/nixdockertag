@@ -1,5 +1,5 @@
 {
   image = "ghcr.io/farcaller/mucklet-chatbot";
   followTag = "latest";
-  hash = "5d689ea6b9b5ebbc43a714aa007ed3b0e6a021102b06a33c2157e99d67609308";
+  hash = "84b5903bbfd1600ab10bc0c77e9b7846c2ad3a092f3e53ff4b266582b8c2845b";
 }

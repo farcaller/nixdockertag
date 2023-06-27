@@ -1,5 +1,5 @@
 {
   image = "ghcr.io/tailscale/golink";
   followTag = "main";
-  hash = "48546ed67e66186054ca075fa50182e64b8c30a306aa3ef6ac535095faf8b0cf";
+  hash = "de833f1d60fde07e968a6816f5c4b47f615d065c841cf8fa3e3a8cf67811696c";
 }

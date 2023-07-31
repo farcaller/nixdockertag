@@ -1,5 +1,5 @@
 {
   image = "ghcr.io/farcaller/wordpress-docker";
   followTag = "latest";
-  hash = "0242d406481f438b06b9b3094d384d07c4d2ff0571c9e5138e3a2b489aa347b0";
+  hash = "e4df0fdbe0255dadb661a97094148cd3c0c663ec91feba5f04fba711a3340172";
 }

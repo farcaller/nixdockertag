@@ -1,5 +1,5 @@
 {
   image = "registry-1.docker.io/dessalines/lemmy";
   followTag = "latest";
-  hash = "86b657d9071d3b91d266928fcbaff2214886cd2341c550cfa03f1284542b0f8d";
+  hash = "4bb76fcbf109ec0362ed07738be6a6e855aa9d90399e140872331ec0321c64c8";
 }

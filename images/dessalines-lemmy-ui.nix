@@ -1,5 +1,5 @@
 {
   image = "registry-1.docker.io/dessalines/lemmy-ui";
   followTag = "latest";
-  hash = "953ad54d9b0f6af8e2d3df39abf4780be49c5e344fc5cb31dfcacf1812bdf8a5";
+  hash = "cdfa3743260306ad1ddb67c32188cb2953ed58e13ef5f5c6776e72ab2f0954b8";
 }

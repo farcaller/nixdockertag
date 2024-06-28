@@ -1,5 +1,5 @@
 {
   image = "registry-1.docker.io/homebridge/homebridge";
   followTag = "latest";
-  hash = "ee88edf71e1e65011922c189aeb6e249dce640558db4e54c41821b2e86c73c11";
+  hash = "be09c4402c351520069014ba77a6d12f22021294c04125b827a8e7cb5b79b9da";
 }

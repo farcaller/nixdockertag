@@ -21,6 +21,6 @@ jobs:
           name: nixdockertag
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Check for updates
-        run: nix run .#updater -- update-all --commit
+        run: nix run .#default -- update-all --commit
       - name: Push updates
         run: git push

@@ -17,8 +17,8 @@ buildGoApplication {
   buildInputs = [ pkgs.nixVersions.nix_2_23 ];
   pname = "nixdockertag";
   version = "1.0";
-  src = ./.;
-  pwd = ./.;
+  src = ./updater;
+  pwd = ./updater;
   go = pkgs.go_1_21;
-  modules = ./gomod2nix.toml;
+  modules = ./updater/gomod2nix.toml;
 }

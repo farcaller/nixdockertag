@@ -20,7 +20,11 @@
         map
           (name: {
             name = builtins.head (builtins.split "\\." name);
-            value = import ./images/${name};
+            value = let imageInfo = import ./images/${name}; in {
+              inherit imageInfo;
+              refTag = "${imageInfo.image}:${imageInfo.followTag}";
+              refHash = "${imageInfo.image}@sha256:${imageInfo.hash}";
+            };
           })
           imageNames);
     } // flake-utils.lib.eachDefaultSystem (system:

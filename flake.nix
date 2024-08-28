@@ -20,8 +20,7 @@
         map
           (name: {
             name = builtins.head (builtins.split "\\." name);
-            value = let imageInfo = import ./images/${name}; in {
-              inherit imageInfo;
+            value = let imageInfo = import ./images/${name}; in imageInfo // {
               refTag = "${imageInfo.image}:${imageInfo.followTag}";
               refHash = "${imageInfo.image}@sha256:${imageInfo.hash}";
             };

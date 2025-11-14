@@ -1,5 +1,5 @@
 {
   image = "ghcr.io/farcaller/tiddlywiki-docker";
   followTag = "latest";
-  hash = "98679ae12d1a109fb04b4dfc3660dff172ed96cc67e9931eaa9fdaaab8935d6d";
+  hash = "f1f7e60d55812b734c8da1b9cc29e9db64874d659c072c00c0dccc8f35cfcd92";
 }

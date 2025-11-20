@@ -1,5 +1,5 @@
 {
   image = "ghcr.io/farcaller/powerdns-docker";
   followTag = "latest";
-  hash = "abf685fb83ebe8b594b338b12ce0db1e1491d1fe7b7b11f8d9c2fedd1a63a48d";
+  hash = "53b38fb58c52e8fb3d4e0360f9585c32ae9af4bd8807061d7a4f1d18667d329d";
 }

@@ -1,5 +1,5 @@
 {
   image = "postgres";
   followTag = "16-alpine";
-  hash = "57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777";
+  hash = "44c4ee9810eff91f7eab4d822642e01115b1a9eccce4bcbdde7604752d68eac6";
 }

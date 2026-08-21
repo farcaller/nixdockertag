@@ -1,5 +1,5 @@
 {
   image = "ghcr.io/tailscale/tailscale";
   followTag = "latest";
-  hash = "321ce041508c19079b57a28b6666c8d81ab0b08accc0a2585b3ab663d557ac24";
+  hash = "8c42c4574ab066384fcb72f69e086a2ff1dd3652eb6f56856cee34bcf0d2f680";
 }

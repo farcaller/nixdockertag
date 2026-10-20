@@ -1,5 +1,5 @@
 {
   image = "registry-1.docker.io/freshrss/freshrss";
   followTag = "alpine";
-  hash = "b6ae27fb5f507ba5f2bff39ca78af90850b294c1e94bf21bae8d368133422b0e";
+  hash = "9f74a0e2fec6525df04af8dbcf2185b2a8d2cedcf6e37e7354cac9c23b22eca0";
 }
